@@ -128,6 +128,7 @@ Em **APIs REST**, conectamos cada letra do CRUD a um "verbo" do protocolo HTTP p
 <p align="right">
   <i>Dominar o CRUD é o primeiro passo para construir aplicações robustas! 🚀</i>
 </p>
+<img width="612" height="408" alt="image" src="https://github.com/user-attachments/assets/3b32a5f5-76bb-4877-9259-a1195381416c" />
 
 # 🌍 O Protocolo HTTP e os Status Codes
 
@@ -155,23 +156,122 @@ Sempre que o servidor responde, ele envia um **código numérico**. Esses são o
 
 | Código | Nome | Significado | 🛠️ No nosso Projeto |
 | :--- | :--- | :--- | :--- |
-| <img src="https://img.shields.io/badge/-200-brightgreen"> <img width="750" height="600" alt="image" src="https://github.com/user-attachments/assets/760a5ed8-d0a5-4e92-bac3-42d9e21f5552" />| **OK** | Requisição realizada com sucesso! ✅ | Quando o GET retorna os dados de temperatura e umidade. |
-| <img src="https://img.shields.io/badge/-201-green"> | **Created** | Novo recurso criado com sucesso! ✨ | Quando o ESP32 envia um POST e salva uma nova leitura. |
-| <img src="https://img.shields.io/badge/-400-orange"> | **Bad Request** | Erro na requisição ou dados inválidos. ⚠️ | Quando enviamos dados de temperatura no formato errado. |
-| <img src="https://img.shields.io/badge/-401-yellow"> | **Unauthorized** | Falta de autorização/login. 🔑 | Caso a API passe a exigir uma senha de acesso no futuro. |
-| <img src="https://img.shields.io/badge/-404-red"> | **Not Found** | Caminho ou rota não encontrada. 🔍 | Ao tentar acessar uma URL que não existe na nossa API. |
-| <img src="https://img.shields.io/badge/-500-darkred"> | **Server Error** | Deu problema no motor do servidor! 🔥 | Quando há um erro no código da API ou falha interna. |
+| <img src="https://img.shields.io/badge/-100-blue"><img width="750" height="600" alt="image" src="https://github.com/user-attachments/assets/94a81e0b-02f1-461e-b17e-2a36bbcba7c9" />| **Continue** | O servidor recebeu o início do pedido. | O ESP32 envia o cabeçalho e aguarda a confirmação para mandar o restante dos dados. |
+| <img src="https://img.shields.io/badge/-200-green"> <img width="750" height="600" alt="image" src="https://github.com/user-attachments/assets/760a5ed8-d0a5-4e92-bac3-42d9e21f5552" />| **OK** | Requisição realizada com sucesso! ✅ | Quando o GET retorna os dados de temperatura e umidade. |
+| <img src="https://img.shields.io/badge/-201-green"><img width="750" height="600" alt="image" src="https://github.com/user-attachments/assets/0b673e42-20b7-4b67-9e46-296079d19611" />| **Created** | Novo recurso criado com sucesso! ✨ | Quando o ESP32 envia um POST e salva uma nova leitura. |
+| <img src="https://img.shields.io/badge/-204-brightgreen"><img width="750" height="600" alt="image" src="https://github.com/user-attachments/assets/4f351e9d-c30b-4d54-be24-cbaa641bb240" />| **No Content** | Processado sem retorno de corpo. | Após deletar um registro de log antigo com sucesso, a API confirma sem enviar texto. |
+| <img src="https://img.shields.io/badge/-301-yellow"><img width="750" height="600" alt="image" src="https://github.com/user-attachments/assets/ae3ff610-49b3-4f43-adf0-e49fb59faa93" />| **Moved Perm.** | Recurso mudou de lugar permanentemente. | Se a URL da nossa API mudar definitivamente de `/api` para `/v1`. |
+| <img src="https://img.shields.io/badge/-302-yellow"><img width="750" height="600" alt="image" src="https://github.com/user-attachments/assets/d86b9ac2-216e-4780-ab9b-5cad8f177f13" />| **Found** | Mudança temporária de endereço. | Se redirecionarmos o ESP32 para um servidor de testes durante uma manutenção rápida. |
+| <img src="https://img.shields.io/badge/-400-orange"><img width="750" height="600" alt="image" src="https://github.com/user-attachments/assets/a04008e2-b202-4dd6-91c3-6db53973eee5" />| **Bad Request** | Erro na requisição ou dados inválidos. ⚠️ | Quando enviamos dados de temperatura no formato errado. |
+| <img src="https://img.shields.io/badge/-401-orange"><img width="750" height="600" alt="image" src="https://github.com/user-attachments/assets/d07ddee8-3c81-47d3-b9f0-195edad32fc2" />| **Unauthorized** | Falta de autorização/login. 🔑 | Caso a API passe a exigir uma senha de acesso no futuro. |
+| <img src="https://img.shields.io/badge/-402-orange"><img width="750" height="600" alt="image" src="https://github.com/user-attachments/assets/1128c841-2a2e-4930-8936-350eb75ae2ae" />| **Forbidden** | Sem permissão de acesso. | O dispositivo está autenticado, mas tenta acessar dados de um setor que ele não tem permissão. |
+| <img src="https://img.shields.io/badge/-404-orange"><img width="750" height="600" alt="image" src="https://github.com/user-attachments/assets/2e5e2e8e-86a4-417f-8c0f-00a33a71c328" />| **Not Found** | Caminho ou rota não encontrada. 🔍 | Ao tentar acessar uma URL que não existe na nossa API. |
+| <img src="https://img.shields.io/badge/-500-darkred"><img width="750" height="600" alt="image" src="https://github.com/user-attachments/assets/253290bf-419f-461c-bb2b-e8c9eec22fb4" />| **Server Error** | Deu problema no motor do servidor! 🔥 | Quando há um erro no código da API ou falha interna. |
+| <img src="https://img.shields.io/badge/-502-darkred"><img width="750" height="600" alt="image" src="https://github.com/user-attachments/assets/a9b95446-61b3-4d0b-92e6-3bf1ceb6ec7d" />| **Bad Gateway** | Falha na ponte entre servidores. | O servidor principal (Gateway) não recebeu resposta do servidor que roda o código da API. |
+| <img src="https://img.shields.io/badge/-503-darkred"><img width="750" height="600" alt="image" src="https://github.com/user-attachments/assets/f731b993-de7c-4aed-b434-248d925686ce" />| **Service Unav.** | Servidor temporariamente fora do ar. | A API está em manutenção ou o servidor caiu por excesso de requisições dos sensores. |
+| <img src="https://img.shields.io/badge/-504-darkred"><img width="750" height="600" alt="image" src="https://github.com/user-attachments/assets/663015aa-9a86-4fd8-b4eb-91e40af129de" />| **Gateway Timeout** | Tempo de resposta esgotado. | A API demorou muito para salvar os dados e a conexão do ESP32 "expirou". |
 
 ---
 
-### 💡 Dica de Leitura Rápida:
-* 🟢 **2xx:** Sucesso (Tudo certo!)
-* 🟡 **4xx:** Erro do Cliente (Você fez algo errado)
-* 🔴 **5xx:** Erro do Servidor (O sistema quebrou)
+---
 
 ---
+
+# 📂 Categorias de Status Codes (Cheat Sheet💩)
+
+Para facilitar a vida do desenvolvedor, os códigos são agrupados em 5 grandes "famílias". Cada uma começa com um número específico que já indica o que aconteceu:
+
+---
+
+### 🔵 1xx: Informativa (Provisória)
+> **Significado:** *"Aguarde, estou trabalhando nisso."* ⏳
+
+Indica que a solicitação foi recebida e o processo continua. O servidor ainda não enviou a resposta final, mas está processando.
+* **Exemplo Comum:** `100 Continue` (Pode continuar enviando o restante da requisição).
+
+---
+
+### 🟢 2xx: Sucesso (Bem-sucedido)
+> **Significado:** *"Tudo certo! Recebi e processei com sucesso."* ✅
+
+Esta é a família favorita dos desenvolvedores! Indica que a ação foi entendida e concluída.
+* **200 OK:** Resposta padrão para sucesso total.
+* **201 Created:** Sucesso! Um novo recurso (como um cadastro) foi criado.
+* **204 No Content:** Deu certo, mas não há nada para te mostrar no corpo da resposta.
+
+---
+
+### 🟡 3xx: Redirecionamento
+> **Significado:** *"Esta página mudou, siga para o novo local."* ↪️
+
+Indica que o cliente precisa tomar medidas adicionais para completar a solicitação. Geralmente usado quando uma URL muda de endereço.
+* **301 Moved Permanently:** O recurso agora mora em outro endereço para sempre.
+* **302 Found:** O recurso mudou de lugar só por enquanto.
+
+---
+
+### 🟠 4xx: Erro de Cliente (Erro do Usuário)
+> **Significado:** *"Você (usuário/aplicativo) cometeu um erro na requisição."* ❌
+
+Indica que a requisição tem algum problema de sintaxe, falta de permissão ou simplesmente não existe.
+* **400 Bad Request:** A requisição veio "torta" ou malformada.
+* **401 Unauthorized:** Você esqueceu de fazer login.
+* **403 Forbidden:** Eu sei quem você é, mas você não tem permissão para entrar aqui.
+* **404 Not Found:** O clássico! O servidor não encontrou o que você pediu.
+
+---
+
+### 🔴 5xx: Erro de Servidor
+> **Significado:** *"Eu (servidor) falhei ao processar seu pedido."* 🔥
+
+Aqui o problema não é com o usuário, mas sim com a infraestrutura ou o código que roda no servidor.
+* **500 Internal Server Error:** O código deu erro e o servidor não sabe explicar o porquê.
+* **502 Bad Gateway:** O servidor recebeu uma resposta inválida de outro servidor acima dele.
+* **503 Service Unavailable:** Estamos em manutenção ou o servidor está sobrecarregado.
+* **504 Gateway Timeout:** O tempo de espera acabou e o servidor não respondeu.
+
+---
+
 <p align="center">
-  <b><i>Entender os códigos de status é como falar a língua dos servidores! 💻🗣️</i></b>
+  <b>💡 Dica Pro:</b> Se o erro começa com <b>4</b>, o problema costuma ser no seu código/app. Se começa com <b>5</b>, o problema é no servidor/API!
 </p>
+
+---
+# 📦 Entendendo o Formato JSON
+<img width="203" height="167" alt="image" src="https://github.com/user-attachments/assets/7e1a8afa-b79f-4602-a436-f29a472c0b45" />
+
+## 📋 1.5) O que é JSON?
+**JSON** é a sigla para *JavaScript Object Notation* (Notação de Objeto JavaScript). 
+
+É um formato leve e padronizado para **organizar e trocar dados** entre sistemas. Imagine o JSON como um "formulário inteligente" que os computadores usam para conversar, sendo muito fácil de ler tanto por humanos quanto por máquinas. 🤖💬
+
+---
+
+## 🏗️ Como o formato funciona?
+O JSON utiliza uma estrutura baseada em **pares de chave e valor**:
+* **Chave:** É o nome do campo (ex: `"temperatura"`).
+* **Valor:** É a informação guardada (ex: `26.5`).
+
+### 📊 Exemplo de leitura do nosso projeto:
+No nosso sistema de monitoramento, o **ESP32** envia os dados para a API exatamente assim:
+
+```json
+{
+  "temperatura": 26.5,
+  "umidade": 72,
+  "data": "2026-05-15T14:30:00"
+}
+```
+🚀 Por que o JSON é o padrão das APIs?
+Existem quatro motivos principais para o JSON dominar o mundo das APIs REST:
+
+🚀 Leveza: Ocupa pouquíssimo espaço na transmissão, tornando a comunicação entre o sensor e o servidor muito rápida.
+
+🧠 Simplicidade: É fácil de entender e escrever, o que evita erros de programação.
+
+🌎 Universalidade: É compatível com praticamente todas as linguagens de programação (Python, JavaScript, C++, PHP, etc.).
+
+⚡ Conversão Direta: As linguagens modernas conseguem transformar um texto JSON em um objeto de código instantaneamente.
+
 
   
