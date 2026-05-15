@@ -586,3 +586,158 @@ DELETE http://localhost:3000/api/sensores/3
 # PARTE 3
 <img width="715" height="409" alt="image" src="https://github.com/user-attachments/assets/4f6c2a36-8cf5-4b49-bbc4-4b04061f15a6" />
 
+---
+
+<img width="831" height="388" alt="image" src="https://github.com/user-attachments/assets/4508ef32-a2f9-42e5-a77f-84381403319f" />
+
+
+---
+<img width="796" height="387" alt="image" src="https://github.com/user-attachments/assets/084eb540-f449-478a-b5a6-cd63a21de7e7" />
+
+---
+# 🚀 PARTE 4 — COMO RODAR E REFLEXÃO
+
+---
+
+## ▶️ 4.1) Como Rodar o Projeto
+
+### 📋 Pré-requisitos
+
+Antes de iniciar o projeto, é necessário ter instalado:
+
+- **Node.js** (versão 18 ou superior)
+- **npm** (gerenciador de pacotes do Node.js, já vem junto)
+
+Para verificar se está instalado corretamente, use no terminal:
+
+```bash
+node -v
+npm -v
+```
+
+Se aparecerem números de versão, está tudo funcionando. ✅
+
+---
+
+### 📥 Instalação do Projeto
+
+Clone o projeto ou baixe os arquivos e abra a pasta no terminal.
+
+Depois execute:
+
+```bash
+npm install
+```
+
+Esse comando instala todas as dependências necessárias da API.
+
+---
+
+### ▶️ Como Rodar a API
+
+No terminal, execute:
+
+```bash
+node server.js
+```
+
+Se tudo estiver correto, aparecerá uma mensagem parecida com:
+
+```bash
+Servidor rodando em http://localhost:3000
+```
+
+Isso significa que a API está funcionando corretamente. ✅
+
+---
+
+### 🧪 Como Testar a API
+
+Para testar os endpoints utilizamos o **Postman**.
+
+---
+
+#### 🔹 Requisição GET
+
+##### URL
+
+```bash
+http://localhost:3000/api/sensores
+```
+
+##### ✅ Exemplo de resposta
+
+```json
+[
+  {
+    "id": 1,
+    "temperatura": 28,
+    "umidade": 53,
+    "hora": "09:12"
+  }
+]
+```
+
+---
+
+#### 🔹 Requisição POST
+
+##### URL
+
+```bash
+http://localhost:3000/api/sensores
+```
+
+##### Body (JSON)
+
+```json
+{
+  "temperatura": 30,
+  "umidade": 45,
+  "hora": "14:20"
+}
+```
+
+##### ✅ Resposta esperada
+
+```json
+{
+  "mensagem": "Dado cadastrado com sucesso!"
+}
+```
+
+---
+
+# 🛠️ 4.2) Tecnologias Utilizadas
+
+| Tecnologia | Função |
+|---|---|
+| **Node.js** | Ambiente que executa JavaScript no servidor |
+| **Express.js** | Framework utilizado para criar as rotas e organizar a API |
+| **Postman** | Ferramenta usada para testar os endpoints |
+| **JavaScript** | Linguagem principal utilizada no projeto |
+| **JSON** | Formato usado para enviar e receber dados |
+| **CORS** | Middleware utilizado para permitir comunicação entre aplicações |
+| **GitHub** | Plataforma utilizada para versionamento do código |
+
+---
+
+# 💭 4.3) Reflexão Sobre a Atividade
+
+O que mais gostamos nessa atividade foi aprender como funciona uma API na prática e perceber como os dados podem ser enviados e recebidos entre aplicações. 
+
+Também foi interessante utilizar o Postman (apesar dele me odiar), porque conseguimos visualizar o funcionamento real do sistema.🧑‍🔧
+
+Outra parte muito legal foi organizar as rotas e ver o servidor funcionando corretamente no navegador e no terminal. Isso mostra como funciona a comunicação entre cliente e servidor.
+
+---
+
+## ⚠️ Principais Dificuldades  para mim 😑
+
+
+- esquecer algum ponto e vírgula ou chave;🤦‍♀️
+- Postman.☠️
+
+
+
+
