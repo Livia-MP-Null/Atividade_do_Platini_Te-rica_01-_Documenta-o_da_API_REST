@@ -583,3 +583,6 @@ DELETE http://localhost:3000/api/sensores/3
 | `DELETE` | `/api/sensores/:id` | Remover sensor |
 
 ---
+# PARTE 3
+<img width="715" height="409" alt="image" src="https://github.com/user-attachments/assets/4f6c2a36-8cf5-4b49-bbc4-4b04061f15a6" />
+
