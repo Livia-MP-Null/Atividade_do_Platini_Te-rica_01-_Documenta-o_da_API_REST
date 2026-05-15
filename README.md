@@ -274,4 +274,312 @@ Existem quatro motivos principais para o JSON dominar o mundo das APIs REST:
 ⚡ Conversão Direta: As linguagens modernas conseguem transformar um texto JSON em um objeto de código instantaneamente.
 
 
-  
+# 📚 DOCUMENTAÇÃO DOS ENDPOINTS / ROTAS [parte 2 ]
+
+---
+
+# 🌐 API de Sensores
+
+Esta API permite consultar, cadastrar, atualizar e remover dados de sensores de temperatura e umidade.
+
+---
+
+# 📥 1. GET `/api/sensores`
+
+## 📝 Descrição
+Retorna todo o histórico de sensores cadastrados.
+
+---
+
+## 📌 Parâmetros
+Nenhum.
+
+---
+
+## 🚀 Exemplo de Requisição
+
+```http
+GET http://localhost:3000/api/sensores
+```
+
+---
+
+## ✅ Resposta de Sucesso
+
+**Status Code:** `200 OK`
+
+```json
+[
+  {
+    "id": 1,
+    "temperatura": 28,
+    "umidade": 53,
+    "hora": "09:12"
+  },
+  {
+    "id": 2,
+    "temperatura": 31,
+    "umidade": 46,
+    "hora": "13:46"
+  }
+]
+```
+
+---
+
+## ❌ Resposta de Erro
+
+**Status Code:** `500 Internal Server Error`
+
+```json
+{
+  "erro": "Erro ao buscar os dados dos sensores."
+}
+```
+
+---
+
+# 🔍 2. GET `/api/sensores/:id`
+
+## 📝 Descrição
+Retorna os dados de um sensor específico.
+
+---
+
+## 📌 Parâmetros
+
+| Parâmetro | Tipo | Descrição |
+|:---|:---|:---|
+| `id` | Number | ID do sensor |
+
+---
+
+## 🚀 Exemplo de Requisição
+
+```http
+GET http://localhost:3000/api/sensores/1
+```
+
+---
+
+## ✅ Resposta de Sucesso
+
+**Status Code:** `200 OK`
+
+```json
+{
+  "id": 1,
+  "temperatura": 28,
+  "umidade": 53,
+  "hora": "09:12"
+}
+```
+
+---
+
+## ❌ Resposta de Erro
+
+**Status Code:** `404 Not Found`
+
+```json
+{
+  "erro": "Sensor não encontrado."
+}
+```
+
+---
+
+# ➕ 3. POST `/api/sensores`
+
+## 📝 Descrição
+Cadastra um novo sensor no sistema.
+
+---
+
+## 📌 Body JSON
+
+| Campo | Tipo | Descrição |
+|:---|:---|:---|
+| `temperatura` | Number | Temperatura registrada |
+| `umidade` | Number | Umidade registrada |
+| `hora` | String | Horário da medição |
+
+---
+
+## 🚀 Exemplo de Requisição
+
+```http
+POST http://localhost:3000/api/sensores
+Content-Type: application/json
+```
+
+```json
+{
+  "temperatura": 26,
+  "umidade": 60,
+  "hora": "15:30"
+}
+```
+
+---
+
+## ✅ Resposta de Sucesso
+
+**Status Code:** `201 Created`
+
+```json
+{
+  "mensagem": "Sensor cadastrado com sucesso.",
+  "sensor": {
+    "id": 4,
+    "temperatura": 26,
+    "umidade": 60,
+    "hora": "15:30"
+  }
+}
+```
+
+---
+
+## ❌ Resposta de Erro
+
+**Status Code:** `400 Bad Request`
+
+```json
+{
+  "erro": "Dados inválidos. Verifique os campos enviados."
+}
+```
+
+---
+
+# ✏️ 4. PUT `/api/sensores/:id`
+
+## 📝 Descrição
+Atualiza as informações de um sensor existente.
+
+---
+
+## 📌 Parâmetros
+
+| Parâmetro | Tipo | Descrição |
+|:---|:---|:---|
+| `id` | Number | ID do sensor |
+
+---
+
+## 📌 Body JSON
+
+| Campo | Tipo | Descrição |
+|:---|:---|:---|
+| `temperatura` | Number | Nova temperatura |
+| `umidade` | Number | Nova umidade |
+| `hora` | String | Novo horário |
+
+---
+
+## 🚀 Exemplo de Requisição
+
+```http
+PUT http://localhost:3000/api/sensores/2
+Content-Type: application/json
+```
+
+```json
+{
+  "temperatura": 29,
+  "umidade": 50,
+  "hora": "16:00"
+}
+```
+
+---
+
+## ✅ Resposta de Sucesso
+
+**Status Code:** `200 OK`
+
+```json
+{
+  "mensagem": "Sensor atualizado com sucesso.",
+  "sensor": {
+    "id": 2,
+    "temperatura": 29,
+    "umidade": 50,
+    "hora": "16:00"
+  }
+}
+```
+
+---
+
+## ❌ Resposta de Erro
+
+**Status Code:** `404 Not Found`
+
+```json
+{
+  "erro": "Sensor não encontrado."
+}
+```
+
+---
+
+# 🗑️ 5. DELETE `/api/sensores/:id`
+
+## 📝 Descrição
+Remove um sensor do sistema.
+
+---
+
+## 📌 Parâmetros
+
+| Parâmetro | Tipo | Descrição |
+|:---|:---|:---|
+| `id` | Number | ID do sensor |
+
+---
+
+## 🚀 Exemplo de Requisição
+
+```http
+DELETE http://localhost:3000/api/sensores/3
+```
+
+---
+
+## ✅ Resposta de Sucesso
+
+**Status Code:** `200 OK`
+
+```json
+{
+  "mensagem": "Sensor removido com sucesso."
+}
+```
+
+---
+
+## ❌ Resposta de Erro
+
+**Status Code:** `404 Not Found`
+
+```json
+{
+  "erro": "Sensor não encontrado."
+}
+```
+
+---
+
+# 📖 Resumo das Rotas
+
+| Método | Rota | Função |
+|:---|:---|:---|
+| `GET` | `/api/sensores` | Listar sensores |
+| `GET` | `/api/sensores/:id` | Buscar sensor por ID |
+| `POST` | `/api/sensores` | Cadastrar sensor |
+| `PUT` | `/api/sensores/:id` | Atualizar sensor |
+| `DELETE` | `/api/sensores/:id` | Remover sensor |
+
+---
